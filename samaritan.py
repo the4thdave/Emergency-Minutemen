@@ -1,4 +1,4 @@
-# Emergency Minutemen Hackathon Project - 2/23/19
+# Samaritan Hackathon Project - 2/23/19
 from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk
