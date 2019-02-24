@@ -38,7 +38,17 @@ def destroy_option():
 
 
 def amber_preview():
-    window = Toplevel(root)
+    preview_window = Toplevel(root)
+    preview_window.title("Amber Alert Preview")
+    preview_label = ttk.Label(preview_window, text="Fresno, CA AMBER Alert: LIC/ 5UMH719 (CA)\n"
+                                                   "2002 Maroon Volvo S60 \n"
+                                                   "Susie Collins 7 y/o 4'0\" "
+                                                   "Brown Eyes Brown Hair", font=("Arial", 30))
+    preview_label.grid(row=0, column=0)
+    preview_image = ttk.Label(preview_window, image=volvo)
+    preview_image.grid(row=1, column=0)
+    preview_license = ttk.Label(preview_window, image=plate)
+    preview_license.grid(row=2, column=0)
 
 
 # Hurricane
@@ -81,7 +91,7 @@ class Hurricane:
 # AMBER
 class AMBER:
     def __init__(self):
-        self.header = ttk.Label(frame, text="AMBER Emergency", font=("Arial", 30))
+        self.header = ttk.Label(frame, text="AMBER Alert", font=("Arial", 30))
         self.header.grid(row=0, column=4, columnspan=4)
 
         self.go_back = ttk.Button(frame, text="← Go Back", command=go_back).grid(row=0, column=0)
@@ -110,9 +120,9 @@ class AMBER:
         self.eye_label.grid(row=3, column=4)
         self.eye_entry = ttk.Entry(frame).grid(row=3, column=5)
 
-        self.clothes_label = ttk.Label(frame, text="Clothes:")
-        self.clothes_label.grid(row=3, column=6)
-        self.clothes_entry = ttk.Entry(frame).grid(row=3, column=7)
+        self.license_label = ttk.Label(frame, text="LIC:")
+        self.license_label.grid(row=3, column=6)
+        self.license_entry = ttk.Entry(frame).grid(row=3, column=7)
 
         self.area_label = ttk.Label(frame, text="Location:")
         self.area_label.grid(row=3, column=8)
@@ -134,11 +144,17 @@ class AMBER:
         self.car_color_label.grid(row=4, column=8)
         self.car_color_entry = ttk.Entry(frame).grid(row=4, column=9)
 
-        self.preview = ttk.Button(frame, text="Preview", command=amber_preview)
-        self.preview.grid(row=5, column=4, columnspan=2)
+        self.add_victim = ttk.Button(frame, text="Add Victim")
+        self.add_victim.grid(row=5, column=2, columnspan=2)
 
-        self.send = ttk.Button(frame, text="Send Message")
-        self.send.grid(row=5, column=6, columnspan=2)
+        self.add_suspect = ttk.Button(frame, text="Add Suspect")
+        self.add_suspect.grid(row=5, column=4, columnspan=2)
+
+        self.preview = ttk.Button(frame, text="Preview", command=amber_preview)
+        self.preview.grid(row=5, column=6, columnspan=2)
+
+        self.send = ttk.Button(frame, text="Send Alert")
+        self.send.grid(row=5, column=8, columnspan=2)
 
 
 # Earthquake
@@ -189,8 +205,14 @@ option.grid(column=2, columnspan=2, pady=10)
 start_button = ttk.Button(frame, text="Start", command=start)
 start_button.grid(row=1, column=2, columnspan=2)
 
-# Map
+# Images
 PIL_map = Image.open("nycmap.png")
 nyc_map = ImageTk.PhotoImage(PIL_map)
+
+PIL_car = Image.open("volvo.png")
+volvo = ImageTk.PhotoImage(PIL_car)
+
+PIL_plate = Image.open("cali_plate.jpeg")
+plate = ImageTk.PhotoImage(PIL_plate)
 
 root.mainloop()
