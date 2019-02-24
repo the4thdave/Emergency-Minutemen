@@ -1,4 +1,4 @@
-# Emergency-Minutemen
+# Samaritan
 A project for the Escape From New York 2019 hackathon sponsored by MD5 and the Department of Defense.
 https://devpost.com/software/volunteer-minutemen
 
